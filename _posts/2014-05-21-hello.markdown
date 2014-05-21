@@ -1,0 +1,12 @@
+---
+layout: post
+title: hello-jekyll
+categories: [Blog, Development]
+---
+
+{{ page.title }}
+================
+
+Hello blog.
+
+中文测试
