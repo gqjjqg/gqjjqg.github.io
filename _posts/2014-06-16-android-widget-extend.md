@@ -15,3 +15,5 @@ categories: [Development, Project]
  4. HorizontalListView   　
  5. ImageController   　　
  6. RotateLayout
+ 7. VerticalSeekBar
+ 8. CustomCheckBox
