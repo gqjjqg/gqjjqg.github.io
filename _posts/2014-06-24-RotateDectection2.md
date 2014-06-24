@@ -29,6 +29,7 @@ RotateDectection[1] 介绍了旋转检测和注册接口。这里介绍一下旋
 		return true;
 	}
 </code></pre>
+</br>
 degree为当前旋转角度，offset为相对之前旋转的度数，flag为顺时针或者逆时针的标记。均会由
 com.guo.android_extend.CustomOrientationDetector计算传入。offset在顺时针时为正，逆时针时为负。
 这样旋转的动画就完成了，在最后用handler去post一个动画的runanble即可。这个runnable也在com.guo.android_extend下。
