@@ -52,6 +52,7 @@ com.guo.android_extend.CustomOrientationDetector计算传入。offset在顺时�
 		canvas.restore();
 	}
 </code></pre></br>
+值得注意的是布局需要调用一个setWillNotDraw来让OnDraw生效。
 布局的画布略有不同：</br>
 <pre><code>
 	@Override
@@ -91,3 +92,5 @@ com.guo.android_extend.CustomOrientationDetector计算传入。offset在顺时�
 		return new PointF(x, y);
 	}
 </code></pre></br>
+
+这部分控件，可以用来制作环形菜单，目前sample中没有包含，考虑以后增加。
