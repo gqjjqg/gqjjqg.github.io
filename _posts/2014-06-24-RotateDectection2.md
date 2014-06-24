@@ -39,5 +39,55 @@ com.guo.android_extend.CustomOrientationDetector计算传入。offset在顺时�
 这样旋转的动画就完成了，在最后用handler去post一个动画的runanble即可。这个runnable也在com.guo.android_extend下。
 当然不同的View可能当前的角度各不相同（这种只有在动态增加的情况下可能产生），因此必须要实现一个getCurrentOrientationDegree的方法，
 这个方法是告诉CustomOrientationDetector当前这个注册监听的对象当前的角度是多少，用来计算旋转offset和degree之用。</br>
-这样计算角度和旋转的部分都集中统一于CustomOrientationDetector。
-
+这样计算角度和旋转的部分都集中统一于CustomOrientationDetector。</br>
+</br>
+旋转显示的核心则是旋转画布，在View的onDraw中重写即可：</br>
+<pre><code>
+	@Override
+	protected void onDraw(Canvas canvas) {
+		// TODO Auto-generated method stub
+		canvas.save();
+		canvas.rotate(-mCurDegree, this.getWidth() / 2f, this.getHeight() / 2f);
+		super.onDraw(canvas);
+		canvas.restore();
+	}
+</code></pre></br>
+布局的画布略有不同：</br>
+<pre><code>
+	@Override
+	protected void onDraw(Canvas canvas) {
+		// TODO Auto-generated method stub
+		super.onDraw(canvas);
+		canvas.rotate(-mCurDegree, this.getWidth() / 2f, this.getHeight() / 2f);
+	}
+</code></pre></br>
+在Android 3.0之后android支持布局直接rotate，3.0之前只能把画布旋转之后，同时还要把点击的点重写映射，这样才能和布局的点击位置一致。这部分的代码可能随着时间推移，2.3.3的减少会逐渐废弃，目前的处理方法是先旋转MotionEvent中的点，再重新dispatch。
+<pre><code>
+	@Override
+	public boolean dispatchTouchEvent(MotionEvent ev) {
+		PointF newPoint = rotatePoint(new PointF(ev.getX(), ev.getY()),
+				new PointF(this.getWidth() / 2F, this.getHeight() / 2F),
+				-mCurDegree);
+		MotionEvent newEvent = MotionEvent.obtain(ev.getDownTime(),
+				ev.getEventTime(), ev.getAction(), newPoint.x, newPoint.y,
+				ev.getPressure(), ev.getSize(), ev.getMetaState(),
+				ev.getXPrecision(), ev.getYPrecision(), ev.getDeviceId(),
+				ev.getEdgeFlags());
+		// TODO Auto-generated method stub
+		return super.dispatchTouchEvent(newEvent);
+	}
+	/**
+	 * @param A
+	 * @param B center point
+	 * @param degree
+	 * @return
+	 */
+	private PointF rotatePoint(PointF A, PointF B, float degree) {
+		float radian = (float) Math.toRadians(degree);
+		float cos = (float) Math.cos(radian);
+		float sin = (float) Math.sin(radian);
+		float x = (float) ((A.x - B.x)* cos +(A.y - B.y) * sin + B.x);  
+		float y = (float) (-(A.x - B.x)* sin + (A.y - B.y) * cos + B.y);  
+		return new PointF(x, y);
+	}
+</code></pre></br>
