@@ -6,7 +6,9 @@ categories: [Development, Project]
 
 {{ page.title }}
 ================
-
+RefClass:</br>
+	com.guo.android_extend.CustomOrientationDetector</br>
+	
 旋转检测是在做camera相关的项目时提取的。为了固定activity方向，但是又支持横竖屏，通过注册OrientationEventListener来获得当前设备旋转角度。通过计算旋转角度，然后旋转布局上的各个按钮或者部分控件，达到适配屏幕旋转的目的。这种方式不同于真正的区分横竖屏的独立布局，布局设计上更加简单也更容易控制，用户体验上也比较好。</br>
 </br>
 在项目中提取出来的主要类是 com.guo.android_extend.CustomOrientationDetector</br>
