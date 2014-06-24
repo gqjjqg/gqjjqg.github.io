@@ -7,6 +7,12 @@ categories: [Development, Project]
 {{ page.title }}
 ================
 
+RefClass:
+	com.guo.android_extend.widget.ExtImageButton</br>
+	com.guo.android_extend.widget.ExtImageView</br>
+	com.guo.android_extend.widget.ExtRelativeLayout</br>
+	com.guo.android_extend.RotateRunable</br>
+	
 RotateDectection[1] 介绍了旋转检测和注册接口。这里介绍一下旋转动画的实现。</br>
 考虑到4个方向旋转，View的旋转可以分成 顺时针旋转90/逆时针旋转90/旋转180三种情况。这样旋转动画可以简单实现：
 </p><pre><code>
