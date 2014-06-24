@@ -17,14 +17,14 @@ RotateDectection[1] 介绍了旋转检测和注册接口。这里介绍一下旋
 			Log.i(TAG, "Not Shown!");
 			return false;
 		}
-		</br>
+		
 		Animation animation = new RotateAnimation (offset, 0,
 				Animation.RELATIVE_TO_SELF, 0.5f, 
 				Animation.RELATIVE_TO_SELF, 0.5f);
 		animation.setDuration(ANIMATION_TIME);
 		animation.setFillAfter(true);
 		mHandler.post(new RotateRunable(animation, this, degree));
-		</br>
+		
 		mCurDegree = degree;
 		return true;
 	}
