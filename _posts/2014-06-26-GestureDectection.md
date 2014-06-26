@@ -1,6 +1,6 @@
 ---
 layout: post
-title: RotateDectection[1]
+title: CustomGestureDetector
 categories: [Development, Project]
 ---
 
