@@ -19,27 +19,25 @@ Bitmap在android中是最容易引起OOM问题的对象，但是为了显示，�
 1的实现需要依靠LinkedHashMap，以及java的“软链接”。正常情况下一个LRU的LinkedHaspMap是较为适合做cache的，这样加入的顺序也会成为一个需要考虑的因素。基本的实现如下：
 
     public class LRULinkedHashMap<K, V> extends LinkedHashMap<K, V> {
-	/**
-	 * @Version InitVersion. 10000L
-	 */
-	private static final long serialVersionUID = 10000L;
-
-	private int mMaxSize;
-
-	public LRULinkedHashMap(int initialCapacity, float loadFactor,
-			boolean accessOrder) {
-		super(initialCapacity, loadFactor, accessOrder);
-		// TODO Auto-generated constructor stub
-		mMaxSize = initialCapacity;
-	}
-
-
-
-	@Override
-	protected boolean removeEldestEntry(Entry<K, V> eldest) {
-		// TODO Auto-generated method stub
-		return size() > mMaxSize;
-	}
+		/**
+		 * @Version InitVersion. 10000L
+		 */
+		private static final long serialVersionUID = 10000L;
+	
+		private int mMaxSize;
+	
+		public LRULinkedHashMap(int initialCapacity, float loadFactor,
+				boolean accessOrder) {
+			super(initialCapacity, loadFactor, accessOrder);
+			// TODO Auto-generated constructor stub
+			mMaxSize = initialCapacity;
+		}
+	
+		@Override
+		protected boolean removeEldestEntry(Entry<K, V> eldest) {
+			// TODO Auto-generated method stub
+			return size() > mMaxSize;
+		}
 
     }
 
