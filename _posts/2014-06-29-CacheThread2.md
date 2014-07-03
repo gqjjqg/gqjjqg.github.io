@@ -45,8 +45,8 @@ com.guo.android_extend.cache.BitmapMonitorThread
 
 线程中的队列用LinkedHashMap实现，采用了View为Key值，能独立标记Bitmap的String或者ID为Value，这个Value被作为bitmap cache里的Key值。
 简单的使用例子如下：
-	// mointor ImageView set as fresh View. Image path set as key for cache.
-	private class Mointor extends BitmapMonitor<ImageView, String> {
+	  // mointor ImageView set as fresh View. Image path set as key for cache.
+	  private class Mointor extends BitmapMonitor<ImageView, String> {
 
     		public Mointor(ImageView view, String id) {
 				super(view, id);
@@ -131,9 +131,13 @@ com.guo.android_extend.cache.BitmapMonitorThread
 			return convertView;
 		}
 	
-使用的关键代码都在上面，只要实现decodeImage和freshBitmap两个方法就可以让decode Bitmap完成异步刷新。这么做的优点显而易见：
+使用的关键代码都在上面，只要实现decodeImage和freshBitmap两个方法就可以让decode Bitmap完成异步刷新。
+这么做的优点显而易见：
+
 在有大量的图需要解码时，不会阻塞UI线程，不会导致因为解码导致的滑动卡住。
+
 有些需要异步下载的情况也可以在freshBitmap时，很容易整合进去，直接post到download线程去做就可以。
+
 这样UI 线程的工作负担就非常少，仅仅需要保持及时刷新和响应用户操作就可以。
 
 更详细的使用，请参考项目中的sample工程。
