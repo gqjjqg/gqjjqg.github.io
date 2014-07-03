@@ -45,14 +45,15 @@ com.guo.android_extend.cache.BitmapMonitorThread
 
 线程中的队列用LinkedHashMap实现，采用了View为Key值，能独立标记Bitmap的String或者ID为Value，这个Value被作为bitmap cache里的Key值。
 简单的使用例子如下：
-	  // mointor ImageView set as fresh View. Image path set as key for cache.
-	  private class Mointor extends BitmapMonitor<ImageView, String> {
+
+	    // mointor ImageView set as fresh View. Image path set as key for cache.
+	    private class Mointor extends BitmapMonitor<ImageView, String> {
 
     		public Mointor(ImageView view, String id) {
 				super(view, id);
 				// TODO Auto-generated constructor stub
-			}
-			// you should implement the bitmap decode.
+			  }
+			  // you should implement the bitmap decode.
     		@Override
     		public Bitmap decodeImage() {
     			// TODO Auto-generated method stub
