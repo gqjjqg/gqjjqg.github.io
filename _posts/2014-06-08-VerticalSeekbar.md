@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 竖直SeekBar
+title: Vertical Seekbar
 categories: [Development]
 ---
 
