@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Bitmap cached in native memory.
-categories: [Development]
+categories: [Development, Project]
 ---
 
 {{ page.title }}
