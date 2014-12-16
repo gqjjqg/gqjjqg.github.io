@@ -17,3 +17,4 @@ categories: [Development, Project]
  6. RotateLayout
  7. VerticalSeekBar
  8. CustomCheckBox
+ 9. <a href="http://gqjjqg.github.io/development/project/2014/12/16/HttpDownLoader.html">HttpDownLoader</a> 
