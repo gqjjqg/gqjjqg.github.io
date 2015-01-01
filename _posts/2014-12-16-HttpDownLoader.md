@@ -59,4 +59,4 @@ com.guo.android_extend.network.Downloader
 com.guo.android_extend.network.DownloaderManager
 com.guo.android_extend.network.DownloaderStructure
 
-调整之后 DownloaderManager 内放了一个线程池，默认开启5个下载线程处理5个下载任务。 每个 Downloader代表了一个下载任务，分配有独立的唯一的ID，这部分需要使用者控制，确保唯一。构造时，需要传入一个Url以及一个本地目录存放下载文件，下载的临时文件名为同目录下cache结尾的文件。 Downloader包含onDownloadUpdate，onTaskOver onDownloadFinish，三个回调，update时，android 上不能直接更新UI，需要用handler等post到主线程更新。onFinsh时 代表下载已经结束，但数据仍然还在cache的文件。onTaskOver时，真正结束任务，这里需要注意的是继承时 仍然需要调用父类的接口，这是因为任务结束时需要把任务从DownloaderManager的列表中删除，否则有相同ID的下载任务无法再次提交。
+*调整之后 DownloaderManager 内放了一个线程池，默认开启5个下载线程处理5个下载任务。 每个 Downloader代表了一个下载任务，分配有独立的唯一的ID，这部分需要使用者控制，确保唯一。构造时，需要传入一个Url以及一个本地目录存放下载文件，下载的临时文件名为同目录下cache结尾的文件。 Downloader包含onDownloadUpdate，onTaskOver onDownloadFinish，三个回调，update时，android 上不能直接更新UI，需要用handler等post到主线程更新。onFinsh时 代表下载已经结束，但数据仍然还在cache的文件。onTaskOver时，真正结束任务，这里需要注意的是继承时 仍然需要调用父类的接口，这是因为任务结束时需要把任务从DownloaderManager的列表中删除，否则有相同ID的下载任务无法再次提交。*
