@@ -24,5 +24,9 @@ A80 的ttyS0是作为 boot的log输出，因此不适合拿来通信，ttyS1是�
 lichee/tools/pack/chips/sun9iw1p1/configs/cubieboard4/sys_config.fex 
 启用uart4之后，按照编译文档指示，重新编译内核。
 
-接下去测试一下串口4是否工作，剩下的就是软件应用的问题了。
+接下去测试一下串口4是否正常工作，剩下的就是软件应用的问题了。
+
+
+最后的调试图：
+<image src="http://gqjjqg.github.io/images/IMG_20150529_172617.jpg" />
 
