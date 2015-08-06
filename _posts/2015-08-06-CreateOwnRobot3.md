@@ -45,7 +45,7 @@ CubieBoard1 Android 固件制作(支持RTL8187驱动+OV5640UVC摄像头)
 			Networking support  --->
 					Wireless  --->  
 							<M>   Generic IEEE 802.11 Networking Stack (mac80211) 
-							[*]   Enable LED triggers                                                (这个就是MAC80211_LEDS)
+							[*]   Enable LED triggers  (这个就是MAC80211_LEDS)
 			Device Drivers  --->
 					Misc devices  ---> 
 							EEPROM support  ---> 
@@ -61,64 +61,66 @@ CubieBoard1 Android 固件制作(支持RTL8187驱动+OV5640UVC摄像头)
 							Serial drivers  --->  
 									
 	退出并保存。
+    
 4. 修改framework配置
-	1. device/allwinner/cubieboard/BoardConfig.mk
-	因为手头的USB WIFI 芯片是8187的，有一大堆需要修改的：
-	#WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/8192cu.ko"
-	#WIFI_DRIVER_MODULE_NAME          := 8192cu
-	WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/rtl8187.ko"         #新增
-	WIFI_DRIVER_MODULE_NAME          := rtl8187                                                                #新增
 
-	SW_BOARD_USR_WIFI := rtl8187                                                                                        #新增
-	BOARD_WLAN_DEVICE := rtl8187                                                                                        #新增
+	a. device/allwinner/cubieboard/BoardConfig.mk
+        因为手头的USB WIFI 芯片是8187的，有一大堆需要修改的：
+        #WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/8192cu.ko"
+        #WIFI_DRIVER_MODULE_NAME          := 8192cu
+        WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/rtl8187.ko"         #新增
+        WIFI_DRIVER_MODULE_NAME          := rtl8187                                                                #新增
 
-	#SW_BOARD_USR_WIFI := rtl8192cu
-	#BOARD_WLAN_DEVICE := rtl8192cu
-	
-	最后检查一下，要确保这个生效： BOARD_WIFI_VENDOR := realtek。
-	
-	2. device/allwinner/cubieboard/camera.cfg
-	修改配置，把默认CSI的CAMERA设备文件（/dev/video1）改成UVC的CAMERA 设备文件：/dev/video0
-	camera_device = /dev/video0
-	
-	3. hardware/libhardware_legacy/wifi/wifi.c
-	在8188前面增加配置：
-	#elif defined RTL_8187_WIFI_USED
-	/* rtl8192cu usb wifi */
-	#ifndef WIFI_DRIVER_MODULE_PATH
-	#define WIFI_DRIVER_MODULE_PATH         "/system/lib/modules/rtl8187.ko"
-	#endif
-	#ifndef WIFI_DRIVER_MODULE_NAME
-	#define WIFI_DRIVER_MODULE_NAME         "rtl8187"
-	#endif
-	
-	4. hardware/libhardware_legacy/wifi/Android.mk
-	增加：
-	ifeq ($(SW_BOARD_USR_WIFI), rtl8187)
-	LOCAL_CFLAGS += -DRTL_8187_WIFI_USED
-	LOCAL_CFLAGS += -DRTL_WIFI_VENDOR
-	endif
+        SW_BOARD_USR_WIFI := rtl8187                                                                                        #新增
+        BOARD_WLAN_DEVICE := rtl8187                                                                                        #新增
 
-	5.device/allwinner/cubieboard/init.sun4i.rc
-	在boot下追加：
-	insmod /system/lib/modules/uvcvideo.ko
-	insmod /system/lib/modules/mac80211.ko
-	insmod /system/lib/modules/eeprom_93cx6.ko
-	mac80211.ko 和 eeprom_93cx6.ko 是8187依赖的模块，网络和led灯，确保启动后能挂载。
-	
-	6.tools/pack/chips/sun4i/configs/crane/cubieboard/sys_config1.fex
-	启用串口4，找到 uart_para4 ，uart_used = 1即可打开。
-	查询硬件图纸，应该可以找到对应U15模块的 17和18号的引脚为TX 和 RX。
-	port 默认是PH04 和PH05，但是实际上并非如此，对应的应该是PG10和PG11.
-	检查一下CSI1 是used 状态，并占用了PG00 -PG12，CSI1因为没有用到，就可以关闭了。
-	
-	7.device/allwinner/commom/hardware/realtek/wlan/driver_cmd_nl80211.c
-	从网络上参考到的修改，这个是无奈之举，会导致AP热点不能使用，但是STA模式可用。
-	add "return 0;" line 214:
-	vi device/allwinner/commom/hardware/realtek/wlan/driver_cmd_nl80211.c
-	int wpa_driver_nl80211_driver_cmd(void *priv, char *cmd, char *buf,
+        #SW_BOARD_USR_WIFI := rtl8192cu
+        #BOARD_WLAN_DEVICE := rtl8192cu
+
+        最后检查一下，要确保这个生效： BOARD_WIFI_VENDOR := realtek。
+
+	b. device/allwinner/cubieboard/camera.cfg
+        修改配置，把默认CSI的CAMERA设备文件（/dev/video1）改成UVC的CAMERA 设备文件：/dev/video0
+        camera_device = /dev/video0
+
+	c. hardware/libhardware_legacy/wifi/wifi.c
+        在8188前面增加配置：
+        #elif defined RTL_8187_WIFI_USED
+        /* rtl8192cu usb wifi */
+        #ifndef WIFI_DRIVER_MODULE_PATH
+        #define WIFI_DRIVER_MODULE_PATH         "/system/lib/modules/rtl8187.ko"
+        #endif
+        #ifndef WIFI_DRIVER_MODULE_NAME
+        #define WIFI_DRIVER_MODULE_NAME         "rtl8187"
+        #endif
+
+	d. hardware/libhardware_legacy/wifi/Android.mk
+        增加：
+        ifeq ($(SW_BOARD_USR_WIFI), rtl8187)
+        LOCAL_CFLAGS += -DRTL_8187_WIFI_USED
+        LOCAL_CFLAGS += -DRTL_WIFI_VENDOR
+        endif
+
+	e.device/allwinner/cubieboard/init.sun4i.rc
+        在boot下追加：
+        insmod /system/lib/modules/uvcvideo.ko
+        insmod /system/lib/modules/mac80211.ko
+        insmod /system/lib/modules/eeprom_93cx6.ko
+        mac80211.ko 和 eeprom_93cx6.ko 是8187依赖的模块，网络和led灯，确保启动后能挂载。
+
+	f.tools/pack/chips/sun4i/configs/crane/cubieboard/sys_config1.fex
+        启用串口4，找到 uart_para4 ，uart_used = 1即可打开。
+        查询硬件图纸，应该可以找到对应U15模块的 17和18号的引脚为TX 和 RX。
+        port 默认是PH04 和PH05，但是实际上并非如此，对应的应该是PG10和PG11.
+        检查一下CSI1 是used 状态，并占用了PG00 -PG12，CSI1因为没有用到，就可以关闭了。
+
+	g.device/allwinner/commom/hardware/realtek/wlan/driver_cmd_nl80211.c
+        从网络上参考到的修改，这个是无奈之举，会导致AP热点不能使用，但是STA模式可用。
+        add "return 0;" line 214:
+        vi device/allwinner/commom/hardware/realtek/wlan/driver_cmd_nl80211.c
+        int wpa_driver_nl80211_driver_cmd(void *priv, char *cmd, char *buf,
 							  size_t buf_len )
-	{
+        {
 			struct i802_bss *bss = priv;
 			struct wpa_driver_nl80211_data *drv = bss->drv;
 			struct ifreq ifr;
@@ -127,10 +129,10 @@ CubieBoard1 Android 固件制作(支持RTL8187驱动+OV5640UVC摄像头)
 			//test for STA MODE
 			return 0;
 			if (os_strcasecmp(cmd, "STOP") == 0) {
-	
-	
+
 5. 开始编译固件
-	source build/envsetup.sh
+
+    source build/envsetup.sh
 	lunch
 	4
 	make
