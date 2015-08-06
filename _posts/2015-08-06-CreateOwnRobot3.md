@@ -69,10 +69,10 @@ CubieBoard1 Android 固件制作(支持RTL8187驱动+OV5640UVC摄像头)
         #WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/8192cu.ko"
         #WIFI_DRIVER_MODULE_NAME          := 8192cu
         WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/rtl8187.ko"         #新增
-        WIFI_DRIVER_MODULE_NAME          := rtl8187                                                                #新增
+        WIFI_DRIVER_MODULE_NAME          := rtl8187                                  #新增
 
-        SW_BOARD_USR_WIFI := rtl8187                                                                                        #新增
-        BOARD_WLAN_DEVICE := rtl8187                                                                                        #新增
+        SW_BOARD_USR_WIFI := rtl8187                                                 #新增
+        BOARD_WLAN_DEVICE := rtl8187                                                 #新增
 
         #SW_BOARD_USR_WIFI := rtl8192cu
         #BOARD_WLAN_DEVICE := rtl8192cu
