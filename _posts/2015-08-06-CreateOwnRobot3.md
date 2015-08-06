@@ -62,7 +62,7 @@ CubieBoard1 Android 固件制作(支持RTL8187驱动+OV5640UVC摄像头)
 									
 	退出并保存。
 
-4. 修改framework配置
+4.修改framework配置
 
 	a. device/allwinner/cubieboard/BoardConfig.mk
         因为手头的USB WIFI 芯片是8187的，有一大堆需要修改的：
@@ -130,7 +130,7 @@ CubieBoard1 Android 固件制作(支持RTL8187驱动+OV5640UVC摄像头)
 			return 0;
 			if (os_strcasecmp(cmd, "STOP") == 0) {
 
-5. 开始编译固件
+5.开始编译固件
 
     source build/envsetup.sh
 	lunch
