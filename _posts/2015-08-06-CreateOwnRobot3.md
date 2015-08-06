@@ -9,19 +9,23 @@ categories: [Development, Blog]
 CubieBoard1 Android 固件制作(支持RTL8187驱动+OV5640UVC摄像头)
 
 1.编译环境搭建
-	参考官网文档
+
+    参考官网文档
 
 2.解压固件
-	解压：tar -zxvf /xxx/xxx/A10-android4.0.tar.gz
+
+    解压：tar -zxvf /xxx/xxx/A10-android4.0.tar.gz
 
 3.配置内核
-	如果没有需要，可以略过。
-	进入根目录： cd kernel/allwinner/common/
-	配置内核：make ARCH=arm menuconfig
-	进入了UI界面：Linux/arm 3.0.52 Kernel Configuration
-	移动到最后一行并选择：Load an Alternate Configuration File 
-	加载默认的配置并确定：arch/arm/configs/cubieboard_defconfig
-	现在正式开始配置：
+
+    如果没有需要，可以略过。
+    进入根目录： cd kernel/allwinner/common/。
+    配置内核：make ARCH=arm menuconfig。
+    进入了UI界面：Linux/arm 3.0.52 Kernel Configuration。
+    移动到最后一行并选择：Load an Alternate Configuration File 。
+    加载默认的配置并确定：arch/arm/configs/cubieboard_defconfig。
+    现在正式开始配置：
+    
 	a.增加UVC Camera支持
 			Device Drivers  --->   
 					Multimedia support  --->   
@@ -61,15 +65,15 @@ CubieBoard1 Android 固件制作(支持RTL8187驱动+OV5640UVC摄像头)
 	1. device/allwinner/cubieboard/BoardConfig.mk
 	因为手头的USB WIFI 芯片是8187的，有一大堆需要修改的：
 	#WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/8192cu.ko"
-#WIFI_DRIVER_MODULE_NAME          := 8192cu
-WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/rtl8187.ko"         #新增
-WIFI_DRIVER_MODULE_NAME          := rtl8187                                                                #新增
+	#WIFI_DRIVER_MODULE_NAME          := 8192cu
+	WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/rtl8187.ko"         #新增
+	WIFI_DRIVER_MODULE_NAME          := rtl8187                                                                #新增
 
-SW_BOARD_USR_WIFI := rtl8187                                                                                        #新增
-BOARD_WLAN_DEVICE := rtl8187                                                                                        #新增
+	SW_BOARD_USR_WIFI := rtl8187                                                                                        #新增
+	BOARD_WLAN_DEVICE := rtl8187                                                                                        #新增
 
-#SW_BOARD_USR_WIFI := rtl8192cu
-#BOARD_WLAN_DEVICE := rtl8192cu
+	#SW_BOARD_USR_WIFI := rtl8192cu
+	#BOARD_WLAN_DEVICE := rtl8192cu
 	
 	最后检查一下，要确保这个生效： BOARD_WIFI_VENDOR := realtek。
 	
