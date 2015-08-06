@@ -61,7 +61,7 @@ CubieBoard1 Android 固件制作(支持RTL8187驱动+OV5640UVC摄像头)
 							Serial drivers  --->  
 									
 	退出并保存。
-    
+
 4. 修改framework配置
 
 	a. device/allwinner/cubieboard/BoardConfig.mk
