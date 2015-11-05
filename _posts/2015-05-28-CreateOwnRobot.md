@@ -28,5 +28,5 @@ lichee/tools/pack/chips/sun9iw1p1/configs/cubieboard4/sys_config.fex
 
 
 最后的调试图：
-<image src="http://gqjjqg.github.io/images/IMG_20150529_172617.jpg" width="640" height="480" />
+<image src="http://gqjjqg.github.io/images/IMG_20150529_172617.jpg" width="816" height="612" />
 
