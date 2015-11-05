@@ -1,6 +1,6 @@
 ---
 layout: post
-title: android-widget-extend
+title: android-extend
 categories: [Development, Project]
 ---
 
