@@ -18,13 +18,13 @@ categories: [Development, Blog]
 
 先来看看 Alpha1s的主控板:
 
-<image src="http://gqjjqg.github.io/images/IMG_0970.JPG" width="480" height="640"  />
+<image src="http://gqjjqg.github.io/images/IMG_0970.JPG" width="480" height="480"  />
 
 红色框一个是喇叭，一个是LED灯，也就是眼睛的灯。黄色框是四路舵机串口数据和供电线。蓝色的两路是电源和充电线。
 
 因为选用的是[Dreamer Nano V4.0](http://www.dfrobot.com.cn/goods-628.html) 的板子,没有充电模块，所以舵机供电电路还是先不做改动。拔掉没用的喇叭和LED灯。连接四路舵机中间的串口数据线到nano的串口1：
 
-<image src="http://gqjjqg.github.io/images/IMG_20151105.jpg" width="480" height="640" />
+<image src="http://gqjjqg.github.io/images/IMG_20151105.jpg" width="480" height="480" />
 
 橙色线表示舵机串联的半双工总线。 上位机和nano的通信为全双工的串口线，所以有两条。
 

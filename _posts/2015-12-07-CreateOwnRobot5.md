@@ -8,7 +8,7 @@ categories: [Development, Blog]
 ================
 经过上篇的模型验证和测试，现在可以把这个做的更加完美一些：设计一个扩展板，来真正替代alpha 1s的主控板：
 
-<image src="http://gqjjqg.github.io/images/pcb.jpg" width="480" height="640" />
+<image src="http://gqjjqg.github.io/images/pcb.jpg" width="480" height="480" />
 
 上位机则可以用A20的CubieBoard2板子来做一下性能的提升，顺带增配一个LCD触摸屏。
 
@@ -16,7 +16,7 @@ categories: [Development, Blog]
 
 另外锂电池充电模块没有加入，可以考虑替换原来的DC充电口，增加供电模块。
 
-<image src="http://gqjjqg.github.io/images/IMG_pcb.jpg" width="480" height="640" />
+<image src="http://gqjjqg.github.io/images/IMG_pcb.jpg" width="480" height="480" />
 
 做出来的板子差不多就是这样，焊接上插座和开关，就可以直接上Nano和舵机的各个线路来使用了。
 
