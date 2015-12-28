@@ -41,7 +41,7 @@ com.guo.android_extend.cache.BitmapMonitorThread
 为了应对这样的情况，就需要做延迟解码刷新，延迟下载。在这个项目中，我已经封装了延迟解码刷新和下载的组件。
 
 线程的主要工作流程如下图所示：
-<image src="http://gqjjqg.github.io/images/image_07032135.jpg" />
+<image src="http://gqjjqg.github.io/images/image_07032135.jpg" width="480" height="640"/>
 
 线程中的队列用LinkedHashMap实现，采用了View为Key值，能独立标记Bitmap的String或者ID为Value，这个Value被作为bitmap cache里的Key值。
 简单的使用例子如下：
