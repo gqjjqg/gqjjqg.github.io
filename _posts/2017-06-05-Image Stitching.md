@@ -27,7 +27,7 @@ OpenCV 里有image stitch的算法，参考了一下Image Alignment and Stitchin
 统一坐标系
 图像warp
 
-<img src="http://gqjjqg.github.io/images/result_stitch1.jpg" width=640 height=320/>
+<img src="http://gqjjqg.github.io/images/result_stitch1.jpg" width="640" height="320" />
 
 可以明显看到越往右边拉伸形变越严重。
 参考opencv 往里面增加柱面投影来修正这个问题。
