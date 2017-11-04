@@ -20,7 +20,7 @@ categories: [Development, Project]
  9. [HttpDownLoader](http://gqjjqg.github.io/development/project/2014/12/16/HttpDownLoader.html) 
  10.  SocketTransmite
  11.  UDPBroadcast
- 12.  [Camera&View]()
+ 12.  [Camera&View](https://gqjjqg.github.io/development/project/2017/11/04/CameraView.html)
  13.  Serial
  14.  V4L2 Camera
  15.  ImageConverter
