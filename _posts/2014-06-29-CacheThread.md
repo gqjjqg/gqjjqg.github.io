@@ -16,7 +16,8 @@ Bitmap在android中是最容易引起OOM问题的对象，但是为了显示，�
 
 这三点有各自的优点和缺点，对于1，java层的cache也会受到jvm的内存限制，节省出的内容不够多。优点是实现起来简单方便，容易使用。对于2，java层需要bitmap时，每次都需要给定大小，再申请，使用和实现都不太方便。优点是使用完可以立即释放，尤其在bitmap大小比较固定的情况下，可以节省相当多内存。3则是最节省内容的做法，但是兼容性有巨大的问题，实现的方法也更加复杂。
 
-1. 实现需要依靠LinkedHashMap，以及java的“软链接”。正常情况下一个LRU的LinkedHaspMap是较为适合做cache的，这样加入的顺序也会成为一个需要考虑的因素。基本的实现如下：
+1. 实现需要依靠LinkedHashMap，以及java的“软链接”。正常情况下一个LRU的LinkedHaspMap是较为适合做cache的，这样加入的顺序也会成为一个需要考虑的因素。基本的实现如下：    
+
 ```java
 public class LRULinkedHashMap<K, V> extends LinkedHashMap<K, V> {
 	/**
@@ -40,8 +41,10 @@ public class LRULinkedHashMap<K, V> extends LinkedHashMap<K, V> {
 	}
 
 }
-```
-这样就可以作为cache的容器来使用。我们再给它包装一下，因为K并不一定就是整形ID，也可能是String的路径，也可能是其他的类型。
+```    
+
+这样就可以作为cache的容器来使用。我们再给它包装一下，因为K并不一定就是整形ID，也可能是String的路径，也可能是其他的类型。    
+
 ```java
 package com.guo.android_extend.cache;
 
@@ -79,8 +82,9 @@ public class BitmapCache<T> {
 	}
 
 }
-```
-包装之后的Cache使用时需要指定用什么作为Key来标志Bitmap。这部分是比较常用的功能，因此已经放入项目中，可以随时取用。
+```    
+
+包装之后的Cache使用时需要指定用什么作为Key来标志Bitmap。这部分是比较常用的功能，因此已经放入项目中，可以随时取用。    
 
 2. 实现需要JNI支持，首先初始化时在JNI层指定好cache的大小，因为JNI的内存就是系统的实际内容，也不是无穷无尽的。具体的做法就因需求而定了。基本思路和Java的代码思路类似。因为项目中没有加入，这里就不细说了。
 
