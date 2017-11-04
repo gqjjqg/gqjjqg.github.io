@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Camera
+title: Camera & View
 categories: [Development, Project]
 ---
 
@@ -28,6 +28,7 @@ onAfterRender 则在渲染完成之后被触发，这里可以做一些资源释
 
 CameraSurfaceView 不能单独使用，要配合 CameraGLSurfaceView 这个渲染显示的控件来用。CameraGLSurfaceView  这个类里使用了GLRender 这个GL 渲染类，把Camera的数据放进去就可以等比例显示，当然也可以设置不等比例的显示，支持旋转，支持输出渲染帧率。
 
+[GLRender](https://gqjjqg.github.io/development/project/2017/11/04/GLRender.html)    
 
 
 
