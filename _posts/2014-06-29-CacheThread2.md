@@ -85,24 +85,24 @@ private class Mointor extends BitmapMonitor<ImageView, String> {
 	    }
 		return super.mBitmap;
 	}
-		// after decode, you should implement how to fresh the ImageView.
-		// isOld means View is update to set another bitmap.
-		@Override
-		protected void freshBitmap(boolean isOld) {
-			// TODO Auto-generated method stub
-			super.mView.setImageResource(0);
-		super.mView.setImageBitmap(null);
-		if (!isOld) {
-				if (super.mBitmap != null) {
-				super.mView.setImageBitmap(super.mBitmap);
-			} else {
-				super.mView.setImageResource(R.drawable.ic_launcher);
-			}
+	// after decode, you should implement how to fresh the ImageView.
+	// isOld means View is update to set another bitmap.
+	@Override
+	protected void freshBitmap(boolean isOld) {
+		// TODO Auto-generated method stub
+		super.mView.setImageResource(0);
+	super.mView.setImageBitmap(null);
+	if (!isOld) {
+			if (super.mBitmap != null) {
+			super.mView.setImageBitmap(super.mBitmap);
 		} else {
 			super.mView.setImageResource(R.drawable.ic_launcher);
 		}
-			super.mView.invalidate();
-		}
+	} else {
+		super.mView.setImageResource(R.drawable.ic_launcher);
+	}
+		super.mView.invalidate();
+	}
 
 }
 ...............
