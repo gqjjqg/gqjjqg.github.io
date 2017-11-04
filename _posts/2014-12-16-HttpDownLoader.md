@@ -72,9 +72,9 @@ RefClass:
 
 ----
 
-RefClass:</br>
-com.guo.android_extend.network.http.Downloader
-com.guo.android_extend.network.http.DownloaderManager
-com.guo.android_extend.network.NetWrokFile
+RefClass:    
+com.guo.android_extend.network.http.Downloader    
+com.guo.android_extend.network.http.DownloaderManager    
+com.guo.android_extend.network.NetWrokFile    
 
 **下载模块移动到http代码包，DownloaderStructure 更名为NetWorkFile，也提供socket 模块文件传输使用。**
