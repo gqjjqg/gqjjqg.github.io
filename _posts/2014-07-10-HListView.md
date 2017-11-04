@@ -44,6 +44,7 @@ D.---- - | 1 2 3 4 5 | ----  回收看不到的元素
 listener的处理，主要剩下滚动的状态和位置监听。实现滑动和滚动布局之后，相信这部分就不会是难事。
 还是一句话，建议参考sample 代码和源码。
 
+[HListView overscroll and springback](http://gqjjqg.github.io/development/project/2014/10/27/HListView_OverScroll.html)    
 
 
 
