@@ -142,3 +142,6 @@ public View getView(int position, View convertView, ViewGroup parent) {
 这样UI 线程的工作负担就非常少，仅仅需要保持及时刷新和响应用户操作就可以。
 
 更详细的使用，请参考项目中的sample工程。
+
+[BitmapCache](http://gqjjqg.github.io/development/project/2014/11/17/BitmapCache.html)
+
