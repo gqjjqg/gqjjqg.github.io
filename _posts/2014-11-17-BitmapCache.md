@@ -12,7 +12,7 @@ categories: [Development, Project]
  2. Bitmap做JNI层（C层）cache，java层需要时，直接访问JNI申请。 
  3. Bitmap直接存JNI层，采用skia的库解码，创建的也是SkaBitmap，内存完全不计入java层。
  
-在[android-widget-extend](https://github.com/gqjjqg/android-widget-extend) 工程中已经实现了第一种方法，试验过第三种方法。第二种方法还没需求去做。这次乘着刚好有个项目有类似的需求，就试着把第二种方法简单实现了一下。
+在[android-extend](https://github.com/gqjjqg/android-extend) 工程中已经实现了第一种方法，试验过第三种方法。第二种方法还没需求去做。这次乘着刚好有个项目有类似的需求，就试着把第二种方法简单实现了一下。
 
 暂时的需求是这样的：Java层有几张非常大的Bitmap，大约每张可能6M到12M，但是java层内存吃紧，需要缓存到C层。
 
