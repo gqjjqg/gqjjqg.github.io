@@ -27,3 +27,5 @@ forceOrientationChanged方法则是旋转的主要处理方法，在这个里面
     
 CustomOrientationDetector 这个类主要的工作就是 处理了4个方向上旋转的检测，并且维护一个自己的监听列表，
 sample工程里有提供相关的测试示例代码，可以自行参考。    
+
+[RotateDectection[1]](http://gqjjqg.github.io/development/project/2014/06/24/RotateDectection2.html)
