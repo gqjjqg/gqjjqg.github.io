@@ -93,5 +93,5 @@ public class BitmapCache<T> {
 cache 这部分的内容就到此为止了。
 接下去，要介绍的是提升getView的性能，避免滑动的卡顿。    
 
-[Cache&FreshThread[1]](http://gqjjqg.github.io/development/project/2014/06/29/CacheThread2.html)    
+[Cache&FreshThread[2]](http://gqjjqg.github.io/development/project/2014/06/29/CacheThread2.html)    
 
