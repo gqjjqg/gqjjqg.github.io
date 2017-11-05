@@ -26,7 +26,7 @@ onBeforeRender 在渲染图像数据传递到 GLRender 之前会触发，这里�
 
 onAfterRender 则在渲染完成之后被触发，这里可以做一些资源释放之类的操作，也可以什么都不做。
 
-CameraSurfaceView 不能单独使用，要配合 CameraGLSurfaceView 这个渲染显示的控件来用。CameraGLSurfaceView  这个类里使用了GLRender 这个GL 渲染类，把Camera的数据放进去就可以等比例显示，当然也可以设置不等比例的显示，支持旋转，支持输出渲染帧率。
+CameraSurfaceView 单独使用则渲染直接走系统流程，上面部分出函数不会触发。若配合 CameraGLSurfaceView 这个渲染显示的控件来用的的话，。CameraGLSurfaceView  这个类里使用了GLRender 这个GL 渲染类，把Camera的数据放进去就可以等比例显示，当然也可以设置不等比例的显示，支持旋转，支持输出渲染帧率。
 
 [GLRender](https://gqjjqg.github.io/development/project/2017/11/04/GLRender.html)    
 
